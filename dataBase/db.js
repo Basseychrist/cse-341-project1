@@ -1,7 +1,6 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
-
 // Import the MongoDB client
 const { MongoClient, ObjectId } = require("mongodb");
 // const db = require("../dataBase/db"); // Correct path to db.js
@@ -10,9 +9,10 @@ let db;
 const initDb = async (callback) => {
   try {
     // Define the MongoDB URI and create a new MongoClient instance
-    const url =
-      process.env.MONGODB_URL ||
-      "mongodb+srv://Bassey619:Bassey619@cluster0.twjibg0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"; // Replace with your MongoDB URI
+    const url = process.env.MONGODB_URL;
+    if (!url) {
+      throw new Error("MONGODB_URL is not defined in your .env file");
+    }
     const client = new MongoClient(url);
 
     // Connect to the database
@@ -40,6 +40,3 @@ module.exports = {
   getDb,
   ObjectId,
 };
-
-
-
