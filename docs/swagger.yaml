@@ -120,3 +120,5 @@ components:
         - firstName
         - lastName
         - email
+        - favoriteColor
+        - birthday

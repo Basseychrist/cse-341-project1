@@ -4,8 +4,10 @@ const bodyParser = require("body-parser");
 const mongodb = require("./dataBase/db");
 const app = express();
 const swaggerUi = require("swagger-ui-express");
-const YAML = require("yamljs");
-const swaggerDocument = YAML.load("./docs/swagger.yaml");
+// const YAML = require("yamljs");
+const swaggerDocument = require('./docs/swagger.json');
+
+// const swaggerDocument = YAML.load("./docs/swagger.yaml");
 const port = process.env.PORT || 5000;
 const cors = require("cors");
 
